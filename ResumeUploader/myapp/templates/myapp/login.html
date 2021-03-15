@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up Form</title>
+</head>
+<body>
+    <form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+    </form>
+
+    <br>
+    Not a registered user? <a href = "{% url 'signup' %}">Sign up</a> and then login.
+</body>
+</html>

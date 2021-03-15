@@ -1,0 +1,51 @@
+<!doctype html>
+{% load static %}
+{% load myfilter %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel = "stylesheet" href = " {% static 'myapp/css/style.css' %}" >
+
+  <title>Candidate</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="alert-danger text-center p-3">Candidate Details</h1>
+        <div class="row">
+            <div class="col-sm-10 shadow p-5 offset-sm-1">
+                <h3 class="text-center"><u>Resume</u></h3>
+                <p class="text-center"><b>Application No: {{candidate.id}}</b></p>
+                {% if candidate.prfile_image %}
+                <img class="float-end" src = "{{candidate.prfile_image.url}}" alt="" class="img-fluid img-thumbnail mt-4" width="150" height="150">
+                {% else %}
+                <h5 class="float-end">No image available</h5>
+                {% endif %}
+                <p>Name: {{candidate.name}}</p>
+                <p>Date of Birth: {{candidate.dob}}</p>
+                <p>Gender: {{candidate.gender}}</p>
+                <p>Address: {{candidate.locality}}, {{candidate.city}},{{candidate.state}}- {{candidate.pin}}</p>
+                <p>Contact No: {{candidate.mobile}}</p>
+                <p>Email ID: {{candidate.email}}</p>
+                <p>Preferred Job Cities: {{candidate.job_city|remove_special:"[]'"}}</p>
+                <p>Attachment: 
+                {% if candidate.my_file %}
+                <a href ="{{candidate.my_file.url}}">Download File</a></p>
+                {% else %}
+                <h5></h5>No file available</h5>
+                {% endif %}
+                <div class="text-center">
+                    <a href ="{% url 'dashboard' %}" class="btn btn-danger">Back to Home</a>
+                <div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
